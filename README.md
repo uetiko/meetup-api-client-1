@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- PHP 7.2 or latest
+- PHP 7.3 or latest
 - Composer
 
 ### Installing
@@ -27,11 +27,26 @@ composer test
 
 ### Coding style
 
-We are following the default config of php-cs-fixer.
-If you want to verify the code style, please use:
+This project has been provided with several tools for ensure the quality code
 
+- PHP Code Sniffer
+- PHP Mees Detector
+- PHP Code Sniffer Fixer
+- PHP Metrics
+- PHP Loc
+- PHP Stan
 ```
-composer phpcs
+vendor/bin/phpcbf --standard=PSR1 src/ tests/
+vendor/bin/phpcbf --standard=PSR2 src/ tests/
+vendor/bin/phpcbf --standard=PSR12 src/ tests/
+vendor/bin/phpmd src/ xml codesize controversial design naming unusedcode --exclude=vendor/
+vendor/bin/phpmd tests/ xml codesize controversial design naming unusedcode --exclude=vendor/
+vendor/bin/php-cs-fixer fix src/ --dry-run --diff
+vendor/bin/phploc src
+vendor/bin/phpmetrics --report-html=report/metrics ./
+vendor/bin/phpstan analyse -l 7 src tests
+vendor/bin/phploc src
+vendor/bin/phpunit -c phpunit.xml
 ```
 
 php-cs-fixes is able to fix some common errors, 
