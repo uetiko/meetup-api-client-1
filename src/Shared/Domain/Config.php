@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Meetup\Api\Client\Domain;
+namespace Meetup\Shared\Domain;
 
 use ArrayObject;
 
@@ -29,8 +29,11 @@ final class Config
      * @param string $clientSecret
      * @param string $redirectUri
      */
-    public function __construct(string $clientId, string $clientSecret, string $redirectUri)
-    {
+    public function __construct(
+        string $clientId,
+        string $clientSecret,
+        string $redirectUri
+    ) {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
         $this->redirectUri = $redirectUri;
