@@ -8,11 +8,13 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Token\AccessToken;
-use Meetup\Api\Client\Domain\Config;
+use Meetup\Shared\Domain\Config;
 use Psr\Http\Message\ResponseInterface;
 
 class OAuthMeetup extends AbstractProvider
 {
+    const ACCESS_TOKEN_RESOURCE_OWNER_ID = 'id';
+
     /** @var Config $config */
     private $config = null;
     public function __construct(Config $config)
